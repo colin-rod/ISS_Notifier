@@ -1,6 +1,7 @@
 from datetime import datetime
 import smtplib
 import requests
+import time
 
 #Enter my Lat and Long
 MY_LAT=52.517224
@@ -52,6 +53,7 @@ def send_email():
                             msg=f"Subject:ISS notifier!\n\nLook up!"
                             )
 
-
-if check_overhead() and check_sundown():
-    send_email()
+while True:
+    time.sleep(60)
+    if check_overhead() and check_sundown():
+        send_email()
